@@ -4,9 +4,16 @@ import { ChartBarIcon, ClockIcon } from "react-native-heroicons/outline";
 import { FireIcon, UsersIcon } from "react-native-heroicons/solid";
 import ItemMisc from './ItemMisc';
 
+
+
+
+
 const Misc = () => {
+
   return (
-    <View style={{ flex:1, flexDirection:'row', marginVertical:8, justifyContent:'space-evenly'}} >
+
+
+    <View style={{ flex: 1, flexDirection: 'row', marginVertical: 8, justifyContent: 'space-evenly' }} >
       <ItemMisc
         text1={35}
         text2={'Mins'}

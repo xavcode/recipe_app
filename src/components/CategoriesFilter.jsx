@@ -6,7 +6,6 @@ import { colors } from '../constant.js'
 
 const CategoriesFilter = ({ categories, activeCategory, handleCategories }) => {
 
-
   return (
     <View style={{ height: 150 }}>
       <Text style={{
