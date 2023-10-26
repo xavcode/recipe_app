@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
-export default function WelcomeScreen({navigation}) {
+export default function WelcomeScreen({ navigation }) {
   return (
 
     <View style={styles.container}>
@@ -12,7 +12,7 @@ export default function WelcomeScreen({navigation}) {
       <Text style={styles.punchline}>All the meals in your hands!</Text>
 
       <TouchableOpacity
-        onPress={()=>navigation.navigate('home')}
+        onPress={() => navigation.navigate('home')}
         style={styles.btn}>
         <Text style={styles.btnText}>START!</Text>
       </TouchableOpacity>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     alignItems: 'center',
-    backgroundColor: '#f96163',
+    backgroundColor: '#FFA500',
     borderRadius: 18,
     color: 'white',
     paddingVertical: 18,

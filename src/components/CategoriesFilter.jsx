@@ -1,8 +1,6 @@
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-import { colors } from '../constant.js'
-
 
 const CategoriesFilter = ({ categories, activeCategory, handleCategories }) => {
 
@@ -13,7 +11,7 @@ const CategoriesFilter = ({ categories, activeCategory, handleCategories }) => {
         fontSize: 22,
         fontWeight: '700',
       }}>
-        Categorias</Text>
+        Categories</Text>
       {/* Categories scroll */}
       <ScrollView horizontal showsHorizontalScrollIndicator={true}>
         {categories?.map((category, idx) => {
@@ -31,7 +29,7 @@ const CategoriesFilter = ({ categories, activeCategory, handleCategories }) => {
                   height: 60,
                   width: 60,
                   borderRadius: 38,
-                  backgroundColor: isActive ? colors.COLOR_PRIMARY : '#D6D3D1',
+                  backgroundColor: isActive ? '#FFA500' : '#D6D3D1',
                 }}>
                   <Image
                     source={{ uri: category.strCategoryThumb }}

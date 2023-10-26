@@ -1,11 +1,8 @@
 import { Text, View } from 'react-native'
 
-import { ChartBarIcon, ClockIcon } from "react-native-heroicons/outline";
-import { FireIcon, UsersIcon } from "react-native-heroicons/solid";
+// import { ChartBarIcon, ClockIcon } from "react-native-heroicons/outline";
+// import { FireIcon, UsersIcon } from "react-native-heroicons/solid";
 import ItemMisc from './ItemMisc';
-
-
-
 
 
 const Misc = () => {
