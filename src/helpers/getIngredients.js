@@ -8,6 +8,7 @@ export default getIngredients = (data) => {
         ingredients.push(ingredient)
       }
     }
+    // we use set to remove the repeated ingredients of the recipe
     const set = new Set(ingredients)
     return Array.from(set)
   } catch (error) {
