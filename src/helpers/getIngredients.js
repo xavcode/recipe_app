@@ -1,14 +1,15 @@
 export default getIngredients = (data) => {
-  const ingredients = []
-  console.log(data)
-  for (i = 1; i <= 20; i++) {
-    const ingredient = data[`strIngredient${i}`]
-    if (ingredient.trim()) {
-      ingredients.push(ingredient)
-      console.log(ingredient)
+  try {
+    if (!data) return []
+    const ingredients = []
+    for (i = 1; i <= 20; i++) {
+      const ingredient = data[`strIngredient${i}`]
+      if (ingredient.trim()) {
+        ingredients.push(ingredient)
+      }
     }
+    const set = new Set(ingredients)
+    return Array.from(set)
+  } catch (error) {
   }
-  console.log(ingredients)
-
-  return ingredients
 }

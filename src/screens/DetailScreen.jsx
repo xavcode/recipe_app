@@ -1,13 +1,11 @@
 import { Image, Text, View, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { arrowLeftCircle, } from "react-native-heroicons/solid";
-import { ChevronLeftIcon, ClockIcon } from "react-native-heroicons/outline";
+
 
 import axios from 'axios';
 
-import getIngredients from '../helpers/getIngredients';
-import Misc from '../components/Misc';
 import ImageDetail from '../components/ImageDetail';
+import getIngredients from '../helpers/getIngredients';
 
 const DetailScreen = ({ navigation, route, item }) => {
   const [mealData, setMealData] = useState(null)
@@ -18,12 +16,14 @@ const DetailScreen = ({ navigation, route, item }) => {
     fetchIdMeal(idMeal)
   }, [])
 
-
   const fetchIdMeal = async (id) => {
     const response = await axios.get(`https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-    console.log(response.data.meals[0].idMeal)
-    setMealData(response.data.meals[0])
+    {
+      setMealData(response.data.meals[0])
+    }
   }
+
+
 
   // const ingredientes = getIngredients(mealData)
 
@@ -46,18 +46,15 @@ const DetailScreen = ({ navigation, route, item }) => {
         </View>
 
         {/* Ingredients */}
-        <View >
-          {/* <Text>{mealData.idMeal}</Text> */}
-          <Text style={{ textAlign: 'center', marginBottom: 10, fontSize: 18, fontWeight: '500' }}>Ingredients
-          </Text>
-          <View style={{ paddingHorizontal: 20 }}>
-            {/* <View><Text>{ingredientes}</Text></View> */}
-
-            <Text>Ingrediente 2</Text>
-            <Text>Ingrediente 3</Text>
-          </View>
+        <View>
+          {getIngredients(mealData)?.map(item => {
+            return (
+              <View key={item}>
+                <Text style={{ fontSize: 14, fontWeight: '500', paddingHorizontal: 10 }}> 🥮  |  {item}  | </Text>
+              </View>
+            )
+          })}
         </View>
-
 
         {/* Preparation */}
         <View>
