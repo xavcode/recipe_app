@@ -21,7 +21,7 @@ const ImageDetail = ({ source, navigation }) => {
       <View style={{ flexDirection: 'row', position: 'absolute', width: '100%', justifyContent: 'space-between' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={{ marginHorizontal: 15, marginTop: 30, opacity: .9 }}>
-            <FontAwesome name='chevron-circle-left' size={50} color='#FFA500' />
+            <FontAwesome name='chevron-circle-left' size={50} color='orange' />
           </View>
         </TouchableOpacity>
 
