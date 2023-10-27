@@ -1,13 +1,11 @@
 import { View, Text } from 'react-native'
-import React from 'react'
-import { colors } from '../constant'
 
-export default function ItemMisc({ text1, text2, icon }) {
+export default function ItemMisc({ children, text1, text2, icon }) {
   return (
     <View style={{
       padding: 8,
       borderRadius: 40,
-      backgroundColor: colors.COLOR_PRIMARY
+      backgroundColor: '#FFA500'
     }}>
       <View style={{
         flex: 1,
@@ -17,7 +15,7 @@ export default function ItemMisc({ text1, text2, icon }) {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-
+        {/* {children} */}
         {icon}
 
       </View>
