@@ -1,29 +1,16 @@
-import { StyleSheet, TextInput, View } from 'react-native'
+import { TextInput, View } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 
 const SearchFilter = () => {
   return (
-    <View style={styles.searchFilter}>
-      <FontAwesome
-        name='search' size={20} color={'#f96163'} s />
-      <TextInput style={{ paddingLeft: 8, fontSize: 16, color: 'red' }} placeholder='Search your recipe'></TextInput>
+    <View style={{ flexDirection: 'row', backgroundColor: '#fff', borderRadius: 8, marginVertical: 16, paddingVertical: 8, justifyContent: 'space-between', }}>
+      <TextInput style={{ paddingLeft: 8, fontSize: 16, }} placeholder='Beef asado'>
+      </TextInput>
+      <FontAwesome name='search' size={24} color={'#FFA500'}
+        style={{ right: 10 }} />
     </View>
   )
 }
 
 export default SearchFilter
-
-const styles = StyleSheet.create({
-  searchFilter: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    flexDirection: 'row',
-    marginVertical: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    width: '100%'
-
-  }
-})
