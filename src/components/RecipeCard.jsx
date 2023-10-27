@@ -32,8 +32,9 @@ const RecipeCard = ({ idx, item }) => {
             borderRadius: 25,
           }} />
       </View>
-      <Text style={{ marginTop: 3 }}>
-        {item.strMeal.length > 20 ? item.strMeal.slice(0, 20) + '...' : item.strMeal}</Text>
+      <Text ellipsizeMode='tail' numberOfLines={1} style={{ marginTop: 3, fontSize: 15 }}>
+        {item.strMeal}
+      </Text>
     </Pressable>
   )
 }

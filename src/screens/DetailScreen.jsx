@@ -8,6 +8,7 @@ import ImageDetail from '../components/ImageDetail';
 import getIngredientsNumber from '../helpers/getIngredientsNumber';
 import YoutubeIframe from 'react-native-youtube-iframe';
 import Misc from '../components/Misc';
+import { StatusBar } from 'expo-status-bar';
 
 const DetailScreen = ({ navigation, route, item }) => {
   const [mealData, setMealData] = useState(null)
@@ -43,7 +44,9 @@ const DetailScreen = ({ navigation, route, item }) => {
 
   return (
     //* Image Recipe
+
     <View style={{ flex: 1, backgroundColor: '#f2f2f2', }}>
+      <StatusBar style='dark' />
       <View style={{ flex: 1, marginBottom: 4 }}>
         <ImageDetail source={data.strMealThumb} navigation={navigation} />
       </View>
@@ -76,7 +79,7 @@ const DetailScreen = ({ navigation, route, item }) => {
             return (
               <View key={i} style={{ flexDirection: 'row', paddingHorizontal: 10, marginVertical: 1 }}>
                 <FontAwesome name='minus-circle' size={15} color={'#FFA500'} />
-                <Text style={{ fontSize: 14, fontWeight: '500', paddingHorizontal: 10 }}>
+                <Text style={{ fontSize: 15, fontWeight: '400', paddingHorizontal: 10 }}>
                   {mealData['strIngredient' + i]} {mealData['strMeasure' + i]}
                 </Text>
               </View>
@@ -94,6 +97,7 @@ const DetailScreen = ({ navigation, route, item }) => {
         <View style={{ paddingHorizontal: 10, marginTop: 10 }}>
           <YoutubeIframe
             height={300}
+            play={false}
             videoId={mealData ? getIdYoutube(mealData.strYoutube) : null}
             webViewStyle={{ opacity: 0.99 }}
           />

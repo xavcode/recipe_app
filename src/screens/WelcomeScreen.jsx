@@ -1,9 +1,11 @@
+import { StatusBar } from 'expo-status-bar'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 export default function WelcomeScreen({ navigation }) {
   return (
 
     <View style={styles.container}>
+      <StatusBar style='dark' />
       <Image
         style={styles.image}
         source={require('../../assets/images/logo-welcome.png')}

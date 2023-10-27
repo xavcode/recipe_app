@@ -5,6 +5,7 @@ import SearchFilter from '../components/SearchFilter'
 import CategoriesFilter from '../components/CategoriesFilter'
 import RecipesContainer from '../components/RecipesContainer'
 import axios from 'axios'
+import { StatusBar } from 'expo-status-bar'
 
 
 const URL_CATEGORIES = 'https://themealdb.com/api/json/v1/1/categories.php'
@@ -50,6 +51,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, marginHorizontal: 16, alignItems: 'stretch' }}>
       <Header />
+      <StatusBar style='dark' />
       <SearchFilter />
 
       {/* In order to only render the CategoriesFilter component when has data, we wrap it in an conditional chaining 
