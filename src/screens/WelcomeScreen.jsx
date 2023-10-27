@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: "#f96163",
+    color: "#FFA500",
   },
   punchline: {
     marginTop: 10,
