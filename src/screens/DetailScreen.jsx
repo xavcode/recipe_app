@@ -5,8 +5,9 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import axios from 'axios';
 
 import ImageDetail from '../components/ImageDetail';
-import getIngredients from '../helpers/getIngredients';
+import getIngredientsNumber from '../helpers/getIngredientsNumber';
 import YoutubeIframe from 'react-native-youtube-iframe';
+import Misc from '../components/Misc';
 
 const DetailScreen = ({ navigation, route, item }) => {
   const [mealData, setMealData] = useState(null)
@@ -14,15 +15,23 @@ const DetailScreen = ({ navigation, route, item }) => {
   const idMeal = data.idMeal
 
   useEffect(() => {
-    fetchIdMeal(idMeal)
+    fetchMealWithId(idMeal)
   }, [])
 
-  const fetchIdMeal = async (id) => {
+  const fetchMealWithId = async (id) => {
     const response = await axios.get(`https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     {
       setMealData(response.data.meals[0])
     }
   }
+
+  //todo!! implement search with name
+
+  // const fetchMealWithName = async (name) => {
+  //   const response = await axios.get('https://themealdb.com/api/json/v1/1/search.php?s=Arrabiata')
+  //   console.log(response)
+  // }
+
   const getIdYoutube = (url) => {
     const regex = /[?&]v=([^&]+)/;
     const match = url.match(regex);
@@ -39,33 +48,46 @@ const DetailScreen = ({ navigation, route, item }) => {
         <ImageDetail source={data.strMealThumb} navigation={navigation} />
       </View>
 
+      <Text style={{ fontSize: 18, fontWeight: '500', color: '#FFA500', textAlign: 'center', marginVertical: 2, paddingBottom: 8, borderBottomWidth: 1, borderBottomColor: 'lightgray', }}>{mealData?.strMeal}</Text>
+
+
       {/* Description Recipe */}
 
       <ScrollView style={{ flex: 1, }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: 2, marginHorizontal: 20, }}>
-          <Text style={{ fontSize: 16, fontWeight: '500', textDecorationLine: 'underline' }}>{mealData?.strArea}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '500', textDecorationLine: 'underline' }}>{mealData?.strCategory}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: 3, marginHorizontal: 20, }}>
+          <View style={{ flex: 1 / 2, borderEndWidth: 2, borderEndColor: '#FFA500', alignItems: 'center' }}>
+            <Text style={{ fontSize: 16, fontWeight: '500', }}>{mealData?.strArea}
+            </Text>
+          </View>
+          <View style={{ flex: 1 / 2, alignItems: 'center' }}>
+            <Text style={{ fontSize: 16, fontWeight: '500', }}>{mealData?.strCategory}
+            </Text>
+          </View>
         </View>
 
         <View style={{ marginBottom: 3 }}>
         </View>
 
+        <Misc />
+
         {/* Ingredients */}
-        <View style={{}}>
-          {getIngredients(mealData)?.map(item => {
+        <View style={{ marginVertical: 10 }}>
+          {getIngredientsNumber(mealData)?.map(i => {
             return (
-              <View key={item}>
+              <View key={i} style={{ flexDirection: 'row', paddingHorizontal: 10, marginVertical: 1 }}>
+                <FontAwesome name='minus-circle' size={15} color={'#FFA500'} />
                 <Text style={{ fontSize: 14, fontWeight: '500', paddingHorizontal: 10 }}>
-                  <FontAwesome name='minus-circle' size={14} color={'#FFA500'} />  |  {item}  | </Text>
+                  {mealData['strIngredient' + i]} {mealData['strMeasure' + i]}
+                </Text>
               </View>
             )
           })}
         </View>
 
-        {/* Preparation */}
-        <View>
+        {/* Instructrions */}
+        <View style={{ marginVertical: 6, }}>
           <Text style={{ textAlign: 'center', marginBottom: 10, fontSize: 18, fontWeight: '500' }}>Instructions</Text>
-          <Text style={{ paddingHorizontal: 10 }}>{mealData?.strInstructions}</Text>
+          <Text style={{ paddingHorizontal: 10, textAlign: 'justify' }}>{mealData?.strInstructions}</Text>
         </View>
 
         {/* YoutubeVideo */}
